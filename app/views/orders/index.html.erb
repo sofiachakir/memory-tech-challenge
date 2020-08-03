@@ -4,19 +4,19 @@
 	  <div class="card">
 	    <div class="card-body">
 	      <h5 class="card-title text-uppercase">Revenue</h5>
-	      <p class="card-text"><%= @orders.total_revenue %></p>
+	      <p class="card-text"><%= @orders.total_revenue_in_billions %> M€</p>
 	    </div>
 	  </div>
 	  <div class="card">
 	    <div class="card-body">
 	      <h5 class="card-title text-uppercase">Average Revenue / Order</h5>
-	      <p class="card-text"><%= @orders.average_revenue_per_order %></p>
+	      <p class="card-text"><%= @orders.average_revenue_per_order %> €</p>
 	    </div>
 	  </div>
 	  <div class="card">
 	    <div class="card-body">
 	      <h5 class="card-title text-uppercase">Customers</h5>
-	      <p class="card-text">.</p>
+	      <p class="card-text"><%= @orders.distinct_customers %></p>
 	    </div>
 	  </div>
 	</div>

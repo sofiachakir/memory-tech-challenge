@@ -7,6 +7,18 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'csv'
 
+# Détruire la base actuelle
+OrderProductQuantity.destroy_all
+Order.destroy_all
+Product.destroy_all
+Customer.destroy_all
+Country.destroy_all
+
+# Remettre les compteurs à 0
+ActiveRecord::Base.connection.tables.each do |t|
+  ActiveRecord::Base.connection.reset_pk_sequence!(t)
+end
+
 # Open data file
 file = File.open("app/assets/csv/memory-tech-challenge-data.csv", "r")
 
