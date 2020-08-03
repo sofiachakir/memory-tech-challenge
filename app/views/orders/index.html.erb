@@ -1,0 +1,29 @@
+<div class="container my-5">
+	<h2 class="mb-3">Summary</h2>
+	<div class="card-deck text-center">
+	  <div class="card">
+	    <div class="card-body">
+	      <h5 class="card-title text-uppercase">Revenue</h5>
+	      <p class="card-text"><%= @orders.total_revenue %></p>
+	    </div>
+	  </div>
+	  <div class="card">
+	    <div class="card-body">
+	      <h5 class="card-title text-uppercase">Average Revenue / Order</h5>
+	      <p class="card-text"><%= @orders.average_revenue_per_order %></p>
+	    </div>
+	  </div>
+	  <div class="card">
+	    <div class="card-body">
+	      <h5 class="card-title text-uppercase">Customers</h5>
+	      <p class="card-text">.</p>
+	    </div>
+	  </div>
+	</div>
+
+	<hr class="my-4">
+
+	<h2 class="mb-3">Revenue per month</h2>
+	<div id="graph" class="container"></div>
+
+</div>

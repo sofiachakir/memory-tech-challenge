@@ -24,4 +24,5 @@ class Order < ApplicationRecord
 		order_count = Order.count
 		order_count ? (Order.total_revenue / order_count) : 0
 	end
+
 end
