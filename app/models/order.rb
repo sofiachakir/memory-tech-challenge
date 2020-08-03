@@ -1,4 +1,6 @@
 class Order < ApplicationRecord
+	scope :filter_by_country, -> (country) { where(country: country) }
+
 	belongs_to :customer
 	belongs_to :country
 	has_many :order_product_quantities
@@ -28,7 +30,7 @@ class Order < ApplicationRecord
 	def self.average_revenue_per_order
 		# Revenue in €
 		order_count = Order.count
-		order_count ? (Order.total_revenue / order_count) : 0
+		order_count > 0 ? (Order.total_revenue / order_count) : 0
 	end
 
 	def self.distinct_customers

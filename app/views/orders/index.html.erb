@@ -1,4 +1,21 @@
 <div class="container my-5">
+
+	<!-- Form -->
+	<div class="row my-5">
+		<h2 class="col"> Country : </h2>
+		<%= form_tag root_path, method: :get, class: "col" do %>
+			<%= select_tag :country, options_for_select(@countries), class: "custom-select", onchange: "this.form.submit();" %>
+		<% end %>
+	</div>
+	<!-- ./Form -->
+
+	<div class="row mb-5 mx-auto">
+		<% if @selected_country %>
+			<div> Selected country : <%= @selected_country.name %></div>
+		<% end %>
+	</div>
+
+	<!-- Card deck -->
 	<h2 class="mb-3">Summary</h2>
 	<div class="card-deck text-center">
 	  <div class="card">
@@ -20,10 +37,13 @@
 	    </div>
 	  </div>
 	</div>
+	<!-- ./Card deck -->
 
 	<hr class="my-4">
 
+	<!-- Graph -->
 	<h2 class="mb-3">Revenue per month</h2>
 	<div id="graph" class="container"></div>
+	<!-- ./Graph -->
 
 </div>
