@@ -38,9 +38,12 @@ CSV.foreach(file.path, headers: true) do |row|
 	quantity = OrderProductQuantity.create_order_product(params, order, product)
 	puts "> Quantity : #{quantity.quantity} products ordered"
 
+	puts "-" * 30
 	# Increment
 	i = i + 1
 	break if i==10
 end
+
+puts "Seed done !"
 # Close the file
-#file.close
+file.close
