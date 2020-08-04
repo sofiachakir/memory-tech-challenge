@@ -4,5 +4,6 @@ class OrdersController < ApplicationController
   	@orders = Order.all
   	@orders = @orders.filter_by_country(params[:country]) if params[:country].present?
   	@selected_country = Country.find(params[:country]) if params[:country].present?
+  	@data = @orders.revenue_per_month
   end
 end

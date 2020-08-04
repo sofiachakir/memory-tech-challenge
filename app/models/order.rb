@@ -39,4 +39,10 @@ class Order < ApplicationRecord
 	def self.distinct_customers_in_thousands
 		(Order.distinct_customers / 1000).round
 	end
+
+	def self.revenue_per_month
+		data = Order.joins(:products).pluck(:date, :quantity, :unit_price)
+		data.map!{|d, q, p| [DateTime.parse(d).strftime("%b %Y"), q * p]}
+		data.group_by(&:first).map { |date, revenue| [date, (revenue.sum(&:last)/1000).round(1)] } 
+	end
 end
