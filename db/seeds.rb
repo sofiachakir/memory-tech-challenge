@@ -53,7 +53,7 @@ CSV.foreach(file.path, headers: true) do |row|
 	puts "-" * 30
 	# Increment
 	i = i + 1
-	break if i==10
+	#break if i==10
 end
 
 puts "Seed done !"
