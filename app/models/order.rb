@@ -13,24 +13,23 @@ class Order < ApplicationRecord
 		order ? order : Order.create(order_params)
 	end
 
-	def revenue
-		res = self.order_product_quantities.joins(:product).pluck(:quantity, :unit_price)
-		res.map{|q, up| q * up}.sum
-	end
-
 	def self.total_revenue
 		# Revenue in €
-		Order.all.map{ |o| o.revenue }.sum
+		Order.joins(:products).pluck(:quantity, :unit_price).map{ |q, p| q*p }.sum.round(1)
 	end
 
 	def self.total_revenue_in_billions
 		(Order.total_revenue / (10 ** 6)).round(1)
 	end
 
+	def self.total_revenue_in_thousands
+		(Order.total_revenue / (10 ** 3)).round(1)
+	end
+
 	def self.average_revenue_per_order
 		# Revenue in €
 		order_count = Order.count
-		order_count > 0 ? (Order.total_revenue / order_count) : 0
+		order_count > 0 ? (Order.total_revenue / order_count).round(1) : 0
 	end
 
 	def self.distinct_customers
